@@ -1,0 +1,7 @@
+SELECT * FROM public."Место_работы";
+
+SELECT * FROM public."Автопредприятие";
+
+SELECT * FROM public."Техника";
+
+SELECT * FROM public."Заказ";

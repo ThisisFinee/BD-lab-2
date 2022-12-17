@@ -1,0 +1,9 @@
+--9	
+ALTER TABLE IF EXISTS public."Заказ"
+    ADD COLUMN "Величина_комиссионных" bigint;
+
+Update Заказ
+SET Величина_комиссионных = Оплата/100*(SELECT Комиссионные FROM Автопредприятие WHERE Заказ.Автопредприятие = Автопредприятие.Идентификатор);
+
+ALTER TABLE IF EXISTS public."Заказ"
+    ALTER COLUMN "Величина_комиссионных" SET NOT NULL;

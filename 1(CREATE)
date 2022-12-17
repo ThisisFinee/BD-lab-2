@@ -1,0 +1,58 @@
+CREATE DATABASE "Base_lab_2"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Russian_Russia.1251'
+    LC_CTYPE = 'Russian_Russia.1251'
+	_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+	
+CREATE TABLE IF NOT EXISTS public."Место_работы"
+(
+    "Идентификатор" integer NOT NULL,
+    "Название_организации" text COLLATE pg_catalog."default" NOT NULL,
+    "Адрес_работы" text COLLATE pg_catalog."default" NOT NULL,
+    "Льгота" integer NOT NULL
+)
+TABLESPACE pg_default;
+ALTER TABLE IF EXISTS public."Место_работы"
+    OWNER to postgres;
+	
+CREATE TABLE IF NOT EXISTS public."Автопредприятие"
+(
+    "Идентификатор" integer NOT NULL,
+    "Название" text COLLATE pg_catalog."default" NOT NULL,
+    "Расположение" text COLLATE pg_catalog."default" NOT NULL,
+    "Комиссионные" integer NOT NULL
+)
+
+TABLESPACE pg_default;
+ALTER TABLE IF EXISTS public."Автопредприятие"
+    OWNER to postgres;
+	
+CREATE TABLE IF NOT EXISTS public."Техника"
+(
+    "Идентификатор" integer NOT NULL,
+    "Тип" text COLLATE pg_catalog."default" NOT NULL,
+    "Адрес_гаража" text COLLATE pg_catalog."default" NOT NULL,
+    "Макс_количество" integer NOT NULL,
+    "Стоимость_заказа" bigint NOT NULL
+)
+TABLESPACE pg_default;
+ALTER TABLE IF EXISTS public."Техника"
+    OWNER to postgres;
+
+CREATE TABLE IF NOT EXISTS public."Заказ"
+(
+    "Номер" integer NOT NULL,
+    "Дата" text COLLATE pg_catalog."default" NOT NULL,
+    "Место_работы" integer NOT NULL,
+    "Автопредприятие" integer NOT NULL,
+    "Техника" integer NOT NULL,
+    "Количество" integer NOT NULL,
+    "Оплата" bigint NOT NULL
+)
+TABLESPACE pg_default;
+ALTER TABLE IF EXISTS public."Заказ"
+    OWNER to postgres;
